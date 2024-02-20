@@ -1,0 +1,52 @@
+.content-container {
+  width: 400px;
+  background-color: var(--blue-2);
+  box-shadow: 5px 5px 5px var(--shadow-dark);
+  padding: 20px;
+  max-height: 400px; 
+  overflow-y: auto;
+}
+
+h2 {
+  color: var(--white);
+  text-align: center;
+}
+
+pre {
+  color: var(--white);
+  width: calc(100% - 20px); 
+  margin: 0;
+}
+
+.pop-up {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--blue-2);  
+  padding: 20px; 
+}
+
+button {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: var(--yellow-1);
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  padding: 1em;
+  color: var(--blue-2);
+  font-size: 0.8em;
+  width: 350px;;
+  margin-top: 10px;
+}
+.delete-button button {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #e74c3c; /* Червоний колір кнопки */
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  padding: 1em;
+  color: var(--white);
+  font-size: 0.8em;
+  margin-top: 10px;
+  cursor: pointer;
+}

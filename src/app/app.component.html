@@ -1,0 +1,98 @@
+<div class="search">
+  <form #form="ngForm" (submit)="onSubmit()">
+    <input type="text" placeholder="Search city" name="city" [(ngModel)]="cityName">
+  </form>
+</div>
+
+<div class="container" *ngIf="weatherData">
+  <div class="upper-data">
+<img src="../assets/cold.png" *ngIf="weatherData.current.temp_c<= 15">
+<img src="../assets/hot.png" *ngIf="weatherData.current.temp_c>15">
+    <div class="weather-data">
+      <div class="location">{{weatherData.location.name}}</div>
+      <div class="temperature">{{weatherData.current.temp_c | number: '1.0-0'}}℃</div>
+    </div>
+  </div>
+
+  <div class="lower-data">
+    <div class="more-info-label">
+      <div class="more-info-label-more">
+        <button (click)="openDialog(weatherData)">More Information</button>
+      </div>
+
+      <div class="more-info-container">
+        <div class="info-block">
+          <div class="info-block-label">
+            <img src="../assets/min.png" *ngIf="weatherData.current.feelslike_c <=15">
+            <img src="../assets/max.png" *ngIf="weatherData.current.feelslike_c >15">
+            <span>feels like</span>
+          </div>
+          <div class="info-block-value">
+            {{weatherData.current.feelslike_c| number: '1.0-0'}}℃
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="info-block-label">
+            <img src="../assets/clock.png">
+            <span>last updated</span>
+          </div>
+          <div class="info-block-value">
+            {{weatherData.current.time}}
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="info-block-label">
+            <img src="../assets/humidity.png">
+            <span>humidity</span>
+          </div>
+          <div class="info-block-value">
+            {{weatherData.current.humidity}}%
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="info-block-label">
+            <img src="../assets/wind.png">
+            <span>wind</span>
+          </div>
+          <div class="info-block-value">
+            {{weatherData.current.wind_kph}} km/h
+          </div>
+        </div>
+      </div>
+      <div class="selected-button">
+        <button (click)="addToSelected(weatherData)" *ngIf="!isAdded(weatherData)">Add to selected</button>
+        <button (click)="deleteFromSelected(weatherData)" *ngIf="isAdded(weatherData)">Delete from selected</button>
+      </div>
+    </div>
+    <!-- <div class="selected-table">
+      <div class="selected-table-label">Favourite cities</div>
+      <table>
+        <thead>
+        <tr>
+          <th>City</th>
+          <th>temperature</th>
+          <th>Humidity</th>
+          <th>Wind speed</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of selectedList" (click)="openDialog(item)">
+          <td>{{ item.location.name }}</td>
+          <td>{{ item.current.temp_c }}°C</td>
+          <td>{{ item.current.humidity }} %</td>
+          <td>{{ item.current.wind_kph }} km/h</td>
+        </tr>
+        </tbody>
+      </table>
+    </div> -->
+    <div class="selected-table">
+      <app-selected [selectedList]="selectedList"></app-selected>
+    </div>
+    
+
+  </div>
+  
+</div>
+
+<router-outlet></router-outlet>
+

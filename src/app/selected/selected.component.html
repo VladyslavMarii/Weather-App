@@ -1,0 +1,19 @@
+<div class="selected-table-label">Favourite cities</div>
+<table>
+<thead>
+    <tr>
+        <th>City</th>
+        <th>temperature</th>
+        <th>Humidity</th>
+        <th>Wind speed</th>
+    </tr>
+</thead>
+<tbody>
+<tr *ngFor="let item of selectedList" (click)="openDialog(item)">
+    <td>{{ item.location.name }}</td>
+    <td>{{ item.current.temp_c }}°C</td>
+    <td>{{ item.current.humidity }} %</td>
+    <td>{{ item.current.wind_kph }} km/h</td>
+</tr>
+</tbody>
+</table>
