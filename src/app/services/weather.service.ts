@@ -13,7 +13,7 @@ export class WeatherService {
   getWeatherData(cityName: string): Observable<WeatherData>{
     return this.http.get<WeatherData>('https://weatherapi-com.p.rapidapi.com/current.json', {
       headers: new HttpHeaders()
-      .set('X-RapidAPI-Key', '552295a42bmsh86a7f41465d14cbp13261cjsn5a354ed50973')
+      .set('X-RapidAPI-Key', 'X-RapidAPI-Key')
       .set('X-RapidAPI-Host', 'weatherapi-com.p.rapidapi.com'),
       params: new HttpParams()
       .set('q', cityName)
